@@ -1,0 +1,148 @@
+{% extense 'base.html' %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <title>Online Recipe World</title>
+
+<style>
+
+    body{
+        background-image: url(/images/bgpic.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    .card{
+      margin: 30px;
+      border-color: black;
+      border-radius: 10px;
+      max-height: 5%;
+      
+    }
+
+    .card-img-top{
+      margin-top: 15px;
+    }
+
+    #more{
+      display: none;
+    }
+    
+    #more1{
+      display: none;
+    }
+
+    #more2{
+      display: none;
+    }
+
+    .btn-primary{
+      margin-left: 125px;
+    }
+
+</style>
+
+</head>
+<body>      
+
+  <div class="row">
+    <div class="card" style="width: 18rem; margin-top: 40px;">
+      <img src="/images/Butterchicken.jpg" class="card-img-top" alt="Butter chicken">
+        <div class="card-body">
+          <h5 class="card-title"></h5><strong> Butter Chicken </strong></h5>
+          <p class="card-text">Butter chicken, traditionally known as murgh makhani, is an Indian dish originating in Delhi. It is a type <span id="dots">...</span><span id="more">of curry made from chicken with a spiced tomato and butter sauce. Its sauce is known for its rich texture. It is similar to chicken tikka masala, which uses a tomato paste.</span></p>
+          <button onclick="myFunction()" id="myBtn">Read more</button>
+          
+          <a href="#" class="btn btn-primary" style="margin-top: 125px;">Get Recipe</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem; margin-top: 40px;">
+      <img src="/images/Pavbhaji.webp" class="card-img-top" alt="Pav Bhaji">
+        <div class="card-body">
+          <h5 class="card-title"></h5><strong> Pav Bhaji </strong></h5>
+          <p class="card-text">Pav bhaji is a street food dish from India consisting of a thick vegetable curry served with a soft bread roll. It originated in <span id="dots1">...</span><span id="more1">the city of Mumbaian Indian fast food consisting of a thick spicy vegetable gravy served with soft dinner rolls.</span></p>
+            <button onclick="myFunction1()" id="myBtn1">Read more</button>
+          <a href="#" class="btn btn-primary" style="margin-top: 165px;" >Get Recipe</a>
+        </div>
+    </div>
+  
+
+    <div class="card" style="width: 18rem; margin-top: 40px;">
+      <img src="/images/PaneerTikka.jpg" class="card-img-top" alt="Pav Bhaji">
+        <div class="card-body">
+          <h5 class="card-title"></h5><strong> Paneer Tikka </strong></h5>
+          <p class="card-text">Paneer tikka masala is an Indian dish of paneer tikka cheese served in a spiced gravy. It is a <span id="dots2">...</span><span id="more2">vegetarian alternative to chicken tikka masala. It is a popular dish that is widely available in India and countries with an Indian diaspora.</span></p>
+          <button onclick="myFunction2()" id="myBtn2">Read more</button>
+          <a href="#" class="btn btn-primary" style="margin-top: 145px;" >Get Recipe</a>
+        </div>
+    </div>
+  </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+function myFunction1() {
+  var dots = document.getElementById("dots1");
+  var moreText = document.getElementById("more1");
+  var btnText = document.getElementById("myBtn1");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+function myFunction2() {
+  var dots = document.getElementById("dots2");
+  var moreText = document.getElementById("more2");
+  var btnText = document.getElementById("myBtn2");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+    </script>
+
+{% endblock content %}
+
+</body>
+</html>

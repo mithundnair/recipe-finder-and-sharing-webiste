@@ -1,0 +1,73 @@
+{% extends 'base.html'  %}
+{% load static %}
+
+{% block content %}
+
+    <style>
+                     /* CSS */
+                        
+        
+        body{
+            background-image: url("{% static 'images/Yourrecipe.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: cursive;
+        }
+        
+        input, textarea{
+            width: 100%;
+            padding: 5px;
+            outline: none;
+        }
+
+        label{
+            height: 1.9rem;
+        }
+        
+        fieldset{
+            padding: 80px 120px;
+        }
+
+        form{
+            opacity: 0.8;
+            width: 50%;
+            margin-left: 450px;
+        }
+
+        .btn-primary{
+            width: 30%;
+            margin-left: 250px;
+        }
+        
+        
+        </style>
+    
+
+        <h1 class="display-5 text-center mt-3">Write Your Recipe</h1>
+ 
+    
+    <form  method="post">
+
+        {% csrf_token %}
+        <fieldset>
+            <legend>Your Recipe</legend>>       
+            <div class="form-control">
+                <label for="food">Food</label>
+                <input type="text" id="food" placeholder="Write food name" name="food_name">
+            </div>
+            
+            <div class="form-control">
+                <label for="recipe">Recipe</label>
+                <textarea id="recipe" cols="60" rows="8" placeholder="write your recipe" name="recipe_description"></textarea>
+            </div>
+            <input type="submit" class="btn btn-light border border-3 border-dark" value="submit" style="margin-top: 15px;" >
+        </fieldset>
+    </form>
+
+   
+    
+{% endblock content %}

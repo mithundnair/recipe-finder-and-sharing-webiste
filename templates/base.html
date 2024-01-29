@@ -1,0 +1,104 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+
+      .navbar-nav{
+        font-family: 'Helvatica';
+      }
+
+      
+      
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container-fluid">
+          
+          <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="list-style-type: none;">
+              <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"></a>
+              </li> -->
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'indian_dish' %}" style="color: black;"><strong>Cusines</strong></a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'share_recipe' %}" style="color: black;"><strong>Share Recipe</strong></a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users_recipe' %}" style="color: black;"><strong>Users Recipe</strong></a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'my_recipe' %}" style="color: black;"><strong>My Recipe</strong></a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href= "{% url 'search' %}" style="color: black;"><strong>Search Any Recipe</strong></a>
+              </li>
+          
+
+            <!-- <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+    
+            </form> -->
+          </ul>
+
+          <!-- <button id="darkModeToggle">Dark Mode</button> -->
+
+          {% if request.user.is_authenticated %}
+          <ul class="d-flex align-items-center" style="list-style-type: none;">
+            <li class="nav-item " style="list-style-type: none;">
+                <a class="btn btn-outline-success me-2 text-end " ><strong>{{request.user|capfirst}}</strong></a>
+            </li>
+
+            <li class="nav-item ms-auto" style="list-style-type: none;">
+                <a class="btn btn-danger" href="{% url 'Logout' %}">Logout</a>
+            </li>
+            {% else %}
+             
+            <li class="nav-item" style="list-style-type: none;">
+              <a class="btn btn-danger text-white" href="{% url 'user_auth' %}" style=" color: black;"><strong>Login</strong></a>
+            </li>
+
+        
+          </ul>
+          {% endif %}
+          </div>
+        </div>
+      </nav>
+      {% block content %}
+
+  
+      {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="{% static 'javascript/darkmode.js' %}"></script>
+
+  
+    
+</body>
+</html>
+
+
+

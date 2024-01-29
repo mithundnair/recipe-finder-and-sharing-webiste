@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Recipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            background-image:url("{% static 'images/search.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .box {
+            /* background-image: url("{% static 'images/PaneerTikka.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover; */
+            border: 5px solid white;
+            /* box-shadow: 10px 0 20px rgba(194, 0, 0, 0.3); */
+            margin-top: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40%;
+            width: 30%;
+        }
+
+        #search-btn {
+            margin-left: 10px;
+            color: black;
+        }
+
+        #user-inp {
+            width: 50%;
+            border-radius: 5px;
+        }
+
+        /* .meal-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        } */
+
+        .meal-card {
+            border: 5px solid white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Updated box-shadow for border and overall shadow */
+            text-align: center;
+            color: white;
+        }
+
+        .meal-image {
+            float: left;
+            max-width: 50%;
+            height: 20%;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            clear: both; /* Add clear property to ensure consistent alignment */
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="box" style="margin-left: 650px;">
+        <input type="text" placeholder="Please Type An ingredient" id="user_inp" />
+        <button onclick="searchFood()" id="search-btn" class="btn btn-success" cursor: pointer;>Search</button>
+    </div>
+
+    <div id="result"></div>
+
+    <!-- <div class="container">
+        <div class="card w-25 mt-3 mb-3" style="width: 18rem;">
+            <img src="{{fud_image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{fud_name}}</h5>
+                <blockquote class="blockquote mb-0">
+                    <footer class="blockquote-footer mt-2">{{cuisine}}</footer>
+                </blockquote> -->
+
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Get Instructions
+                </button> -->
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lets Cook</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{instructions}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Gotcha</button> -->
+                    <!-- <button type="button" class="btn btn-primary" >Gotcha</button> -->
+                <!-- </div>
+                </div>
+                </div>
+                </div>
+                </div> -->
+
+            <script>
+
+                function searchFood() {
+                    // Get the input value
+                    var foodName = document.getElementById('user_inp').value;
+
+                    // Check if the input is empty
+                    if (!foodName) {
+                    // Display an alert using SweetAlert
+
+                        Swal.fire({
+                            title: "Sweet!",
+                            text: "You Have To Enter An Ingredient",
+                            imageUrl: "{% static 'images/cakesweetalert.jpg' %}",
+                            imageWidth: 400,
+                            imageHeight: 200,
+                            imageAlt: "Custom image",
+                            confirmButtonText: 'OK',
+                            customClass: {confirmButton: 'btn-success'}
+                        });
+                            
+                        return; // Exit the function if input is empty
+                    }
+                 
+
+                    // Make a request to the food API
+                    var apiKey = '';  // TheMealDB API doesn't require an API key
+                    var apiEndpoint = 'https://www.themealdb.com/api/json/v1/1/search.php';
+                    var apiUrl = `${apiEndpoint}?s=${foodName}`;
+
+                    // Use fetch to make the API request
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Process the API response and display the result
+                            displayResult(data);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
+                }
+                
+                function displayResult(data) {
+                // Display the result on the page
+                    var resultDiv = document.getElementById('result');
+
+                // Check if meals were found
+                    if (data.meals && data.meals.length > 0) {
+                        resultDiv.innerHTML = '<h2>Search Results:</h2>';
+                        resultDiv.style.color = 'yellow';
+                // Loop through all meals
+                        data.meals.forEach(meal => {
+                 // Create a card for each meal
+                        resultDiv.innerHTML += `<div class="meal-card">
+                                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="meal-image">
+                                   <h3>${meal.strMeal}</h3>
+                                   <p>Category: ${meal.strCategory}</p>
+                                   <p>Area: ${meal.strArea}</p>
+                                   <p>Instructions: ${meal.strInstructions}</p>
+                               </div>`;
+                        });
+                    } else {
+                // Use SweetAlert to show a message
+                        Swal.fire({
+                        title: 'No meals found',
+                        text: 'Please try a different meal.',
+                        icon: 'info',
+                        confirmButtonText: 'OK',
+                        customClass: {confirmButton: 'btn-success',
+                        }});
+                    }
+                }
+
+
+
+
+                // function displayResult(data) {
+                //     // Display the result on the page
+                //     var resultDiv = document.getElementById('result');
+
+                //     // Check if meals were found
+                //     if (data.meals) {
+                //         // Display information about the first meal (you might want to loop through all meals if there are multiple)
+                //         var firstMeal = data.meals[0];
+                //         resultDiv.innerHTML = `<h2>${firstMeal.strMeal}</h2>
+                //                    <p>Category: ${firstMeal.strCategory}</p>
+                //                    <p>Area: ${firstMeal.strArea}</p>
+                //                    <p>Instructions: ${firstMeal.strInstructions}</p>`;
+                //     } else {
+                //         resultDiv.innerHTML = '<p>No meals found.</p>';
+                //     }
+                // }
+
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+
+</body>
+
+{% endblock content %}
+
+</html>

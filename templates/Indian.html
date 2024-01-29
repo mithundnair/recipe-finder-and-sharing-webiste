@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Cuisines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+
+        .title{
+            font-family: Algerian;
+        }
+
+        .cuisine{
+            margin-top: 35px;
+            font-size: larger;
+            font-family: Imprint MT shadow;
+            line-height: 200%;
+        }
+
+        body{
+            background-image: url("{% static 'images/' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .text{
+            background-color: white;
+            opacity: 0.8;
+        }
+
+        .card{
+            margin: 12px;
+        }
+
+        .img{
+            height: 30%;
+            width: 40%;
+            margin-left: 550px;
+
+        }
+
+                /* Dark Mode */
+
+        /* @media (prefers-color-scheme:light){
+            body,text{
+                background-color: white;
+            }   
+            h1,h2{
+                color: black;
+            }
+        }
+
+        @media (prefers-color-scheme:dark){
+            body,text{
+                background-color: #000;
+            }   
+            h1,h2{
+                color: #fff;
+            }
+        } */
+
+    </style>
+</head>
+<body>
+
+    <h1 class="title">CUISINES</h1>
+
+    <div class="text">
+
+        <p class="cuisine"><strong>A cuisine is a style of cooking characterized by distinctive ingredients, techniques and dishes, and usually associated with a specific culture or geographic region. Regional food preparation techniques, customs, and ingredients combine to enable dishes unique to a region. Used in English since the late 18th century, the word cuisine meaning manner or style of cooking is borrowed from the French for "style of cooking," as originally derived from Latin coquere "to cook".
+        A cuisine is partly determined by ingredients that are available locally or through trade. Regional ingredients are developed and commonly contribute to a regional or national cuisine, such as Japanese rice in Japanese cuisine.
+        </strong></p>
+    </div>
+
+    <h2 class="title">Top 5 Famous Cuisines</h2>
+
+    <h2 class="top1">1. Chinese</h2>
+    <div class="text">
+        <p class="cuisine"><strong>It is one of the most common cuisines we all are familiar with. Travelling from China till India, it has changed its form, taste and spices to a great extent. But people still lookout for authentic and exotic tastes of the magical Chinese menu, a composite of distinct regional cuisines. 
+        In fact, Chinese cuisine itself is further divided into subtypes and regional flavours. It encompasses dishes from China as well as those from the Chinese diaspora outside the country. In India, Chinese cuisine has been transformed to make it spicier with regional flavours. From Gobi Manchurian to Schezwan Noodles, we have successfully modified some Chinese dishes to suit our preferences. Given its popularity worldwide, it ranks among the top 5 cuisines in the world. </strong></p>
+    </div>
+    <div class="image">
+        <img class="img" src="{% static 'images/chinese.jpg' %}" alt="chinese">   
+    </div>
+    <h2 class="top1">2. French</h2>
+    <div class="text">
+        <p class="cuisine"><strong>French cuisine holds a special place in our hearts. It consists of the cooking traditions and practices from France, with cheese and wine being a major part of the cuisine. The speciality of French cuisine is the techniques used in its making. Although the ingredients used in it are simple, it is made and served with ornate seasonings. French cuisine developed primarily in the city of Paris from the chefs who served the French royalty and then eventually spread throughout the country. 
+        Over time, it was exported overseas. It was heavily influenced by culinary art practices in Italy. One of the aspects of international cuisine is called haute cuisine which translates to high cuisine. This shifted the emphasis from abundance and quantity to moderation and quality food making. French cuisine became more accessible to others via detailed recipe guides. </strong></p>
+    </div>
+    <div class="image">
+        <img class="img" src="{% static 'images/French.jpg' %}" alt="French">
+    </div>
+    <h2 class="top1">3. Italian</h2>
+    <div class="text">
+        <p class="cuisine"><strong>If you have wondered, which is the most famous cuisine in the world? Here’s your answer! It is no surprise if your favourite food includes pizza and pasta. Although, Italian food is much more than cheese and pasta. It is incredibly diverse, with a few characteristics that tie it all together. It includes an emphasis on fresh, local ingredients, and letting them speak for themselves without too much fuss. 
+        It is a type of Mediterranean cuisine that is deeply rooted in traditions in Italy and infuses regional gastronomies. Along with being among the 5 great cuisines of the world, it is also the most copied cuisine! Well, haven’t you seen the incredible variety of pizzas we have today? Gelato as a form of dessert is also a very loved sweet dish, which also originates from Italy. </strong></p>
+    </div>
+    <div class="image">
+        <img class="img" src="{% static 'images/italian.jpg' %}" alt="Italian">
+    </div>
+    <h2 class="top1">4. Indian</h2>
+    <div class="text">
+        <p class="cuisine"><strong>Indian cuisine consists of a great variety of food, ranging from Mughlai to Andhra, from Bengali to Rajasthani to various other local cuisines ranging across different states. It is one of the most varied cultured countries with umpteen dishes, each unique in its own for uses of spices and herbs in several forms. In short Indian cuisine is not a single cuisine but a collection of different regional cuisines; each is its own distinct Indian food. 
+        And with so much variety, it is no surprise to have it among the 5 great cuisines of the world. As one traverses through the country, one will find a sumptuous variety of snacks, breakfast, lunch and dinner menus across each state. The preparations also vary as local spices and ingredients are prominently used. The beauty of Indian cuisine is the sheer variety of flavours be it vegetarian, eggetarian, seafood or meat dishes. Indian cuisine is at par with international cuisine. </strong></p>
+    </div>
+    <div class="image">
+        <img class="img" src="{% static 'images/indian.jpg' %}" alt="Indian">
+    </div>
+    <h2 class="top1">5. Japanese</h2>
+    <div class="text">
+        <p class="cuisine"><strong>It has gained popularity among foodies for its culinary aesthetics. A lot of Japanese food is essentially based on rice and miso soup with an emphasis on seasonal ingredients. Sushi, Sashimi, Gyoza, Rice Bowl and Tempura are some of the very common dishes in Japanese cuisine. With this cuisine to there are a lot of varieties as per the region and season. Over the years, the distinct geographical locations have developed their own culinary traditions too.
+        In India, we see a growing love towards Sushi. The growing popularity to try out Japanese dishes ranks it among top 5 cuisines in the world. </strong></p>
+    </div>
+    <div class="image">
+        <img class="img" src="{% static 'images/japanese.jpg' %}" alt="Japanese">
+    </div>
+
+   
+    
+
+{% endblock %}
+        
+
+
+
+
+
+
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'base.html'  %}
+
+{% load static %}
+
+{% block content %}
+<!--  
+<div class="box">
+    
+    <button class="btn btn-success">Random Recipe</button> -->
+    
+    <!-- <p class="random" style="margin-left: 15px;"><strong>Click to randomly generate a Recipe</strong></p> -->
+    
+    <!-- </div> --> 
+
+
+    
+    <style>
+
+    body{
+        background-image: url("{% static 'images/random.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        
+    }
+    
+    .random{
+        font-size: large;
+        font-family: 'Merryweather';
+        margin-top: 15px;
+        color: black;
+    }
+
+    </style>
+        <div class="container">
+            <div class="card w-25 mt-3 mb-3" style="width: 18rem;">
+                <img src="{{food_image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{food_name}}</h5>
+                  <blockquote class="blockquote mb-0">
+                    <footer class="blockquote-footer mt-2">{{cuisine}}</footer>
+                  </blockquote>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Get Cooking Instructions
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title display-6" id="staticBackdropLabel">Instructions</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           <p>{{cooking_instructions}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Understood</button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                
+
+                  <!-- <p class="card-text">{{cooking_instructions}}</p> -->
+                </div>
+                <h5 class="card-title display-6 ms-2 fw-4">Ingredients</h5>
+                <ul class="list-group">
+                    {% for ingredient in ingredients %}
+                        <li class="list-group-item">{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+                
+              </div>
+        </div>
+        
+        {% endblock content %}
